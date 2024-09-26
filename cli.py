@@ -4,6 +4,7 @@ import time
 print("Welcome to the Really Cool Todo App!")
 print("It is "+time.strftime("%A, %d %B %Y"))
 print("Local time is "+time.strftime("%H:%M"))
+
 while True:
     user_action = input("""Type 'add' followed by the task you want to add, 'show',
     'edit' followed by the number of the task you want to edit,
