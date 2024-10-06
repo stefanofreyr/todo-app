@@ -1,7 +1,3 @@
-from typing import List
-
-from FreeSimpleGUI import Window
-
 import functions
 import FreeSimpleGUI as sg
 import time
@@ -21,19 +17,19 @@ input_box = sg.InputText(tooltip="Type here", key="todo")
 add_button = sg.Button("Add")
 
 list_box = sg.Listbox(values=functions.get_todos(), key="todos",
-                      enable_events=True, size=[45,15])
+                      enable_events=True, size=[45, 15])
 
 edit_button = sg.Button("Edit")
 complete_button = sg.Button("Complete")
 
 exit_button = sg.Button("Exit")
 
-attribution  = sg.Text("App icon by Shahid-Mehmood", font=0.5)
+attribution = sg.Text("App icon by Shahid-Mehmood", font=0.5)
 
 window = sg.Window("The Really Cool Todo App",
                    layout=[[time_info],
                            [label],
-                           [input_box,add_button],
+                           [input_box, add_button],
                            [list_box, edit_button, complete_button],
                            [exit_button],
                            [attribution]],
@@ -41,7 +37,7 @@ window = sg.Window("The Really Cool Todo App",
 
 exit_text = sg.Text("Thank you for using the Really Cool Todo App!")
 ok_button = sg.Button("OK")
-exit_window = sg.Window("Bye!", layout=[[exit_text],[ok_button]], font=("Helvetica", 15))
+exit_window = sg.Window("Bye!", layout=[[exit_text], [ok_button]], font=("Helvetica", 15))
 
 while True:
     event, values = window.read(timeout=200)
@@ -61,9 +57,9 @@ while True:
                 todo_to_edit = values["todos"][0]
                 new_todo = values["todo"] + "\n"
                 todos = functions.get_todos()  # get the list
-                index = todos.index(todo_to_edit) # get the index you want to edit
-                todos[index] = new_todo # edit the todo
-                functions.write_todos(todos) # save the new updated list
+                index = todos.index(todo_to_edit)  # get the index you want to edit
+                todos[index] = new_todo  # edit the todo
+                functions.write_todos(todos)  # save the new updated list
                 window["todos"].update(values=todos)
             except IndexError:
                 sg.popup("You should select a todo to edit first...", title="Error", font=("Helvetica", 20))
